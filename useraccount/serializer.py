@@ -19,3 +19,6 @@ class MyUserSerializer(serializers.ModelSerializer):
             instance.set_password(password)
         instance.save()
         return instance
+
+
+# we must have to update the sceanirio for the updating the password also

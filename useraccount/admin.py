@@ -4,7 +4,7 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 
-from .models import MyUser
+from .models import *
 
 
 class UserCreationForm(forms.ModelForm):
@@ -91,3 +91,13 @@ admin.site.register(MyUser, UserAdmin)
 # ... and, since we're not using Django's built-in permissions,
 # unregister the Group model from admin.
 admin.site.unregister(Group)
+
+
+# register model to admin to and display all the column listed
+class CredentialVarificationAdmin(admin.ModelAdmin):
+    model = CredentialVarification
+    list_display = ('phone_number', 'phone_otp_code',
+                    'email_otp_code', 'varification_status', 'code_sent_counter')
+
+
+admin.site.register(CredentialVarification, CredentialVarificationAdmin)

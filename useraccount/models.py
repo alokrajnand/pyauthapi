@@ -81,3 +81,16 @@ class MyUser(AbstractBaseUser):
         "Is the user a member of staff?"
         # Simplest possible answer: All admins are staff
         return self.is_admin
+
+
+# model for the credential validation
+class CredentialVarification(models.Model):
+    phone_number = models.CharField(max_length=50, unique=True, null=False)
+    Email_varification_code = models.CharField(max_length=200, null=True)
+    phone_otp_code = models.IntegerField()
+    email_otp_code = models.IntegerField()
+    varification_status = models.BooleanField()
+    code_sent_counter = models.IntegerField()
+
+    def __str__(self):
+        return self.phone_number
