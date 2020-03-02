@@ -6,7 +6,6 @@ from django.contrib.auth.models import (
     BaseUserManager, AbstractBaseUser
 )
 from django.core.validators import RegexValidator
-
 # write the code of user manager
 
 
@@ -27,6 +26,7 @@ class MyUserManager(BaseUserManager):
             name=name,
             email_address=self.normalize_email(email_address),
             date_of_birth=date_of_birth,
+
         )
 
         user_obj.set_password(password)
